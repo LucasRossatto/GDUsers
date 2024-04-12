@@ -52,6 +52,14 @@ public class HandleMenu {
 		gs.listarEspecifico(id);
 	}
 
+	public void login() {
+		System.out.println("Digite o nome:");
+		String strNome = sc.next();
+		System.out.println("Digite a senha:");
+		String strSenha = sc.next();
+		gs.login(strNome, strSenha);
+	}
+	
 	private int getNextId() {
 		List<Usuario> usuarios = gs.lerUsuarios();
 		int maxId = 0;

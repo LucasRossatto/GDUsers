@@ -126,4 +126,19 @@ public class GerenciadorDeUsuarios {
 			System.out.println("Usuário não encontrado");
 		}
 	}
+
+	public void login(String strNome, String strSenha) {
+		List<Usuario> usuarios = lerUsuarios();
+		boolean encontrado = false;
+		for (Usuario usuario : usuarios) {
+			if (usuario.getStrNome().equals(strNome) && usuario.getStrSenha().equals(strSenha)) {
+				encontrado = true;
+			}
+		}
+		if (encontrado) {
+			System.out.println("Logado com sucesso!");
+		} else {
+			System.out.println("Usuário não encontrado ou senha incorreta");
+		}
+	}
 }

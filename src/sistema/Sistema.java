@@ -12,7 +12,7 @@ public class Sistema {
 		int opcao = 0;
 		do {
 			System.out.print(
-					"1 - Criar \n2 - Editar \n3 - Deletar \n4 - Listar \n5 - Listar Usuário especifico \n9 - Sair\n");
+					"1 - Criar \n2 - Editar \n3 - Deletar \n4 - Listar \n5 - Listar Usuário especifico\n6 - login \n9 - Sair\n");
 			opcao = sc.nextInt();
 			switch (opcao) {
 			case 1: {
@@ -35,6 +35,10 @@ public class Sistema {
 			}
 			case 5: {
 				hm.listarEspecifico();
+				break;
+			}
+			case 6:{
+				hm.login();
 				break;
 			}
 			default:
