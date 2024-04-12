@@ -27,16 +27,29 @@ public class HandleMenu {
 	}
 
 	public void editar() {
-
+		System.out.println("Digite o ID do usuário: ");
+		int id = sc.nextInt();
+		System.out.println("Digite o novo nome:");
+		String strNome = sc.next();
+		System.out.println("Digite a nova senha:");
+		String strSenha = sc.next();
+		gs.editarUsuario(id, strNome, strSenha);
 	}
 
 	public void deletar() {
 		System.out.println("Digite o ID do usuário a ser deletado");
 		int id = sc.nextInt();
+		gs.deletarUsuario(id);
 	}
 
 	public void listar() {
+		gs.listarUsuarios();
+	}
 
+	public void listarEspecifico() {
+		System.out.println("Digite o ID do usuário que deseja listar: ");
+		int id = sc.nextInt();
+		gs.listarEspecifico(id);
 	}
 
 	private int getNextId() {

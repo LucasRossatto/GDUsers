@@ -62,6 +62,7 @@ public class GerenciadorDeUsuarios {
 	public void deletarUsuario(int id) {
 		List<Usuario> usuarios = lerUsuarios();
 		if (usuarios.removeIf(usuario -> usuario.getIntId() == id)) {
+			reescreverArquivo(usuarios);
 			System.out.println("Usuário deletado com sucesso");
 		} else {
 			System.out.println("Usuário não encontrado");
@@ -79,4 +80,50 @@ public class GerenciadorDeUsuarios {
 		}
 	}
 
+	public void listarUsuarios() {
+		List<Usuario> usuarios = lerUsuarios();
+		if (usuarios.isEmpty()) {
+			System.out.println("Nenhum usuário cadastrado");
+		} else {
+			System.out.println("Lista de usuários");
+			for (Usuario usuario : usuarios) {
+				System.out.println("ID: " + usuario.getIntId() + ", Nome: " + "" + usuario.getStrNome() + ", Senha: "
+						+ usuario.getStrSenha());
+			}
+		}
+	}
+
+	public void listarEspecifico(int id) {
+		List<Usuario> usuarios = lerUsuarios();
+		if (usuarios.isEmpty()) {
+			System.out.println("Nenhum usuário cadastrado");
+		} else {
+			System.out.println("Usuário:");
+			for (Usuario usuario : usuarios) {
+				if (usuario.getIntId() == id) {
+					System.out.println("ID: " + usuario.getIntId() + ", Nome: " + "" + usuario.getStrNome()
+							+ ", Senha: " + usuario.getStrSenha());
+				}
+			}
+		}
+	}
+
+	public void editarUsuario(int id, String novoNome, String novaSenha) {
+		List<Usuario> usuarios = lerUsuarios();
+		boolean encontrado = false;
+		for (Usuario usuario : usuarios) {
+			if (usuario.getIntId() == id) {
+				usuario.setStrNome(novoNome);
+				usuario.setStrSenha(novaSenha);
+				encontrado = true;
+				break;
+			}
+		}
+		if (encontrado) {
+			reescreverArquivo(usuarios);
+			System.out.println("Usuário editado com sucesso!");
+		} else {
+			System.out.println("Usuário não encontrado");
+		}
+	}
 }

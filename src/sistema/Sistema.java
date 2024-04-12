@@ -11,11 +11,30 @@ public class Sistema {
 		HandleMenu hm = new HandleMenu();
 		int opcao = 0;
 		do {
-			System.out.print("1 - Criar \n2 - Editar \n3 - Deletar \n4 - Listar \n9 - Sair\n");
+			System.out.print(
+					"1 - Criar \n2 - Editar \n3 - Deletar \n4 - Listar \n5 - Listar Usuário especifico \n9 - Sair\n");
 			opcao = sc.nextInt();
 			switch (opcao) {
 			case 1: {
 				hm.criar();
+				break;
+			}
+			case 2: {
+				hm.editar();
+				break;
+			}
+
+			case 3: {
+				hm.deletar();
+				break;
+			}
+
+			case 4: {
+				hm.listar();
+				break;
+			}
+			case 5: {
+				hm.listarEspecifico();
 				break;
 			}
 			default:
