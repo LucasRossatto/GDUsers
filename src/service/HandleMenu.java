@@ -59,7 +59,18 @@ public class HandleMenu {
 		String strSenha = sc.next();
 		gs.login(strNome, strSenha);
 	}
-	
+
+	public void TrocarSenha() {
+		gs.listarCadastrados();
+		System.out.println("Digite o id do usuario que deseja trocar a senha:");
+		int id = sc.nextInt();
+		System.out.println("Digite a senha atual");
+		String strSenha = sc.next();
+		System.out.println("Digite a nova senha");
+		String novaSenha = sc.next();
+		gs.TrocarSenha(id, strSenha, novaSenha);
+	}
+
 	private int getNextId() {
 		List<Usuario> usuarios = gs.lerUsuarios();
 		int maxId = 0;
@@ -71,4 +82,5 @@ public class HandleMenu {
 		}
 		return maxId + 1;
 	}
+
 }

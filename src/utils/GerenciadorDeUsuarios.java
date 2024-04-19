@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import models.Usuario;
 
@@ -38,7 +39,7 @@ public class GerenciadorDeUsuarios {
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(NOME_ARQUIVO, true))) {
 			bw.write(usuario.toString());
 			bw.newLine();
-			System.out.println("Usuário adiciona com sucesso!");
+			System.out.println("Usuário adicionado com sucesso!");
 		} catch (IOException e) {
 			System.out.println("Erro ao escrever no arquivo: " + e.getMessage());
 		}
@@ -92,7 +93,7 @@ public class GerenciadorDeUsuarios {
 			}
 		}
 	}
-
+	
 	public void listarEspecifico(int id) {
 		List<Usuario> usuarios = lerUsuarios();
 		if (usuarios.isEmpty()) {
@@ -139,6 +140,35 @@ public class GerenciadorDeUsuarios {
 			System.out.println("Logado com sucesso!");
 		} else {
 			System.out.println("Usuário não encontrado ou senha incorreta");
+		}
+	}
+
+	public void TrocarSenha(int id, String strSenha, String novaSenha) {
+		List<Usuario> usuarios = lerUsuarios();
+		boolean encontrado = false;
+		for (Usuario usuario : usuarios) {
+			if (usuario.getIntId() == id) {
+				usuario.setStrSenha(novaSenha);
+				encontrado = true;
+				}
+			if (encontrado) {
+				reescreverArquivo(usuarios);
+				System.out.println("Senha alterada com sucesso!");
+			} else {
+				System.out.println("Usuário não encontrado ou senha incorreta");
+			}
+		}
+	}
+	public void listarCadastrados() {
+		List<Usuario> usuarios = lerUsuarios();
+		if (usuarios.isEmpty()) {
+			System.out.println("Nenhum usuário cadastrado");
+		} else {
+			System.out.println("Lista de usuários");
+			for (Usuario usuario : usuarios) {
+				System.out.println("ID: " + usuario.getIntId() + ", Nome: " + "" + usuario.getStrNome());
+						
+			}
 		}
 	}
 }
